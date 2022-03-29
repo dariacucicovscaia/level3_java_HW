@@ -3,6 +3,7 @@ package client;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.*;
+import java.util.*;
 public class ClientApp {
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		System.out.println("CLIET START");
@@ -11,7 +12,20 @@ public class ClientApp {
 		Socket clientSocket = new Socket("localhost", 7777);
 		DataOutputStream dout = new DataOutputStream(clientSocket.getOutputStream());
 
-		dout.writeUTF("P18Y3M3D");
+		int numOfIterations = 2;
+		dout.writeInt(numOfIterations);
+		
+		
+		List<Integer> list=new ArrayList<Integer>();
+		list.add(12);
+		list.add(5);
+		
+		
+		
+		for(Integer l:list) {
+			dout.writeInt(l);
+		}
+		
 		dout.close();
 
 		System.out.println("CLIENT END");

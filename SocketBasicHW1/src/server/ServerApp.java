@@ -2,7 +2,7 @@ package server;
 
 import java.io.*;
 import java.net.*;
-import java.time.Period;
+import java.util.*;
 
 public class ServerApp {
 	public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException,
@@ -16,12 +16,23 @@ public class ServerApp {
 		DataInputStream din = new DataInputStream(clientSocket.getInputStream());
 		DataOutputStream dout = new DataOutputStream(clientSocket.getOutputStream());
 
+		int numOfIterations = din.readInt();
 
-		String g =din.readUTF(); 
-			Period p = Period.parse(g);
-			System.out.print("your are: ");
-			System.out.println(p.getYears() + " years and " + p.getMonths() + " months old");
-        
+		
+		List<Integer> lprim = new ArrayList<Integer>();
+		for (int i = 0; i < numOfIterations; i++)
+			lprim.add(din.readInt());
+
+
+		int sum = 0;
+		System.out.print("Collection consists of: ");
+		for (Integer il : lprim) {
+			sum += il;
+			System.out.print(il+" ");
+		}
+		System.out.println("\nThe sum is: " + sum);
+
+		
 		System.out.println("SERVER END");
 	}
 }
