@@ -15,13 +15,19 @@ public class Player implements PlayerInterface, Serializable {
 
 	}
 
-	public Player(String nickname, Integer score, String password, String email) {
-		super();
-		this.nickname = nickname;
-		this.score = score;
-		this.password = password;
-		this.email = email;
+	public Player(String nickname, Integer score) {
+		setNickname(nickname);
+		setScore(score);
 	}
+
+	public Player(String nickname, Integer score, String password, String email) {
+		setNickname(nickname);
+		setScore(score);
+		setPassword(password);
+		setEmail(email);
+	}
+	
+
 
 	@Override
 	public String getNickname() {
@@ -33,18 +39,22 @@ public class Player implements PlayerInterface, Serializable {
 		this.nickname = nickname;
 	}
 
+	@Override
 	public String getPassword() {
 		return password;
 	}
 
+	@Override
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	@Override
 	public String getEmail() {
 		return email;
 	}
 
+	@Override
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -59,8 +69,5 @@ public class Player implements PlayerInterface, Serializable {
 		return score;
 	}
 
-	@Override
-	public String toString() {
-		return "Player [nickname=" + nickname + ", score=" + score + "]";
-	}
+	
 }
