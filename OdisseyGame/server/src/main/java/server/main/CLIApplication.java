@@ -1,12 +1,12 @@
 package server.main;
 
 import java.io.IOException;
+
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-
-import library.domain.ClientSidePlayer;
+import library.domain.Player;
 
 public class CLIApplication {
 	
@@ -24,7 +24,8 @@ public class CLIApplication {
 		ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
 		
 		//4 print player in console
-		ClientSidePlayer player =  (ClientSidePlayer) objectInputStream.readObject();
+		Player player =  Player.class.cast( objectInputStream.readObject());
+		
 		System.err.println("SERVER: received " + player);
 	}
 
