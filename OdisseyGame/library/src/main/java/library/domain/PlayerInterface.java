@@ -16,4 +16,6 @@ public interface PlayerInterface {
 	public String getEmail();
 
 	public void setEmail(String email);
+
+	String toString();
 }
