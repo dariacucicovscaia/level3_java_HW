@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Game -->
+<!-- \- Space -->
+<!-- \- Ship -->
+<!-- \- Gun -->
+<!-- \- Missile -->
+
+<Game>
+	<children>
+		<Space>
+			<children>
+				<Ship>
+					<children>
+						<Gun>
+							<children>
+								<Missile>
+
+								</Missile>
+							</children>
+						</Gun>
+					</children>
+				</Ship>
+			</children>
+		</Space>
+		<dummy></dummy>
+	</children>
+</Game>
