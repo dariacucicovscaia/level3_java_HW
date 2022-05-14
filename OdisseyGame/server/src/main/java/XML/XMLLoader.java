@@ -1,8 +1,6 @@
 package XML;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -25,5 +23,4 @@ public class XMLLoader {
 		return root;
 
 	}
-
 }
