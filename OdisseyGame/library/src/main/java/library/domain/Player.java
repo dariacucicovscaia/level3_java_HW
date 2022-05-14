@@ -2,8 +2,9 @@ package library.domain;
 
 import java.io.Serializable;
 
-public class Player implements PlayerInterface, Serializable {
 
+
+public class Player implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String nickname;
 	private String password;
@@ -29,42 +30,34 @@ public class Player implements PlayerInterface, Serializable {
 	
 
 
-	@Override
 	public String getNickname() {
 		return nickname;
 	}
 
-	@Override
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
 
-	@Override
 	public String getPassword() {
 		return password;
 	}
 
-	@Override
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	@Override
 	public String getEmail() {
 		return email;
 	}
 
-	@Override
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	@Override
 	public void setScore(Integer score) {
 		this.score = score;
 	}
 
-	@Override
 	public Integer getScore() {
 		return score;
 	}
