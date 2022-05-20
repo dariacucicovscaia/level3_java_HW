@@ -1,5 +1,5 @@
 package library.domain;
 
-public class Gun extends library.domain.Node  {
+public class Gun extends library.tom.Node implements Component {
 
 }

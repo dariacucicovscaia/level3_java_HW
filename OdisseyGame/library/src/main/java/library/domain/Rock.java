@@ -1,5 +1,5 @@
 package library.domain;
 
-public class Rock extends library.domain.Node  {
+public class Rock extends library.tom.Node implements Component {
 
 }

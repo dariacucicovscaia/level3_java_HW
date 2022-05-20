@@ -1,65 +1,60 @@
 package library.tom;
 
-import library.domain.DomainFactory;
-import library.domain.Node;
+import library.domain.Game;
+import library.domain.Player;
+import library.domain.Ship;
+import library.domain.Space;
 
 public class TOM extends Node {
-	// Optional property
-	private Integer startTimeStamp = null; // boxed value of --> start game
-	private Integer endTimeStamp = null;
-
 	public static class TOMBuilder {
 
-		private Integer startTimeStamp = null;
-		private Integer endTimeStamp = null;
+		private Game game;
+		private Space space;
+		private Ship ship;
+		private Player player;
 
-		
-		public TOMBuilder withStartTimeStamp(Integer startTimeStamp) { // not void
-			this.startTimeStamp = startTimeStamp;
+		public TOMBuilder withGame(Game game) {
+			this.game = game;
+			return this;
+		}
+		public TOMBuilder withSpace(Space space) {
+			this.space = space;
+			return this;
+		}
+		public TOMBuilder withShip(Ship ship) {
+			this.ship = ship;
 			return this;
 		}
 
-		public TOMBuilder withEndTimeStamp(Integer endTimeStamp) { // not void
-			this.endTimeStamp = endTimeStamp;
+		public TOMBuilder withPlayer(Player player) {
+			this.player = player;
 			return this;
-
 		}
 
-		DomainFactory domainFactory = new DomainFactory();
-		Node game = (Node) domainFactory.get("library.domain.Game");
-		Node space = (Node) domainFactory.get("library.domain.Space");
-		Node ship = (Node) domainFactory.get("library.domain.Ship");
 
-		public void withSpace() {
-			game.appendChild((Node) space);
-		}
-
-		public void withShip() {
-			space.appendChild((Node) ship);
-		}
 
 		public TOM build() {
 			TOM tom = new TOM();
-			tom.appendChild(game);
-		
-			withSpace();
-			withShip();
 
-			//System.out.println(tom.walkTheTree(game));
-
-			if (this.startTimeStamp != null) {
-				tom.startTimeStamp = this.startTimeStamp;
+			if (this.game != null) {
+				tom.appendChild(game);
 			}
-			if (this.endTimeStamp != null) {
-				tom.endTimeStamp = this.endTimeStamp;
+			if (this.game != null && this.space != null) {
+				game.appendChild(space);
+			}
+			if (this.game != null && this.space != null && this.ship != null) {
+				space.appendChild(ship);
+
+			}
+			if (this.game != null && this.space != null && this.ship != null && this.player != null) {
+				ship.appendChild(player);
 			}
 
 			return tom;
 		}
+
 	}
 
-	@Override
-	public String toString() {
-		return "TOM -> startTimeStamp = " + startTimeStamp + "\n" + "    -> endTimeStamp = " + endTimeStamp + "\n";
-	}
 }
+
+		

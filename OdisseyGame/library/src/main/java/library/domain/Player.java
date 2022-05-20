@@ -1,57 +1,35 @@
 package library.domain;
 
+import library.tom.Node;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 import java.io.Serializable;
 
 
 
-public class Player implements Serializable{
+public class Player extends Node implements Serializable , Component{
 	private static final long serialVersionUID = 1L;
-	private String nickname;
-	private String password;
-	private String email;
+
+	private String name;
 	private Integer score;
 
 
-	public Player() {
+	public Player() throws ParserConfigurationException, IOException, SAXException {
+		setName(xmlt("default").getFirstChild(getXmltrav().getFirstChild(getXmltrav().getFirstChild())).getAttributes().getNamedItem("name").getNodeValue());
+		setScore(Integer.parseInt(xmlt("default").getFirstChild(getXmltrav().getFirstChild(getXmltrav().getFirstChild())).getAttributes().getNamedItem("score").getNodeValue()));
+
+		System.out.println(getName() + " " + getScore());
 
 	}
 
-	public Player(String nickname, Integer score) {
-		setNickname(nickname);
-		setScore(score);
+	public String getName() {
+		return name;
 	}
 
-	public Player(String nickname, Integer score, String password, String email) {
-		setNickname(nickname);
-		setScore(score);
-		setPassword(password);
-		setEmail(email);
-	}
-	
-
-
-	public String getNickname() {
-		return nickname;
-	}
-
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public void setScore(Integer score) {
@@ -62,5 +40,5 @@ public class Player implements Serializable{
 		return score;
 	}
 
-	
+
 }

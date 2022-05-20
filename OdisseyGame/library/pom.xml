@@ -6,4 +6,12 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>library</artifactId>
+  <dependencies>
+		<dependency>
+			<artifactId>server</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<groupId>exemples.games</groupId>
+		</dependency>
+	</dependencies>
+ 
 </project>

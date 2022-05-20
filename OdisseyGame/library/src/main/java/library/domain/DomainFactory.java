@@ -1,25 +1,18 @@
 package library.domain;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
 public class DomainFactory {
 
-	public Object get(String fqcn) {
-		Class clazz = null;
-		try {
-			clazz = Class.forName(fqcn);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public static Component create(String fqcn) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+		Component component = null;
+		String FQCN = "library.domain." + fqcn;
 
-		Object object = null;
-		try {
-			object = clazz.newInstance();
-		} catch (InstantiationException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return object;
+		ClassLoader classLoader = DomainFactory.class.getClassLoader();
+		Class<Component> clazz = (Class<Component>) classLoader.loadClass(FQCN);
+		Constructor<Component> constructor = clazz.getConstructor();
+		component = (Component) constructor.newInstance();
+		return component;
 	}
-
 }
