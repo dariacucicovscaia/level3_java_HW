@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<Game status="pending">
+
+   <children>
+		<Space>
+			<children>
+			
+				<Ship health="100" distance="100" angle="0">
+					<children>
+                        <Player name="alpha" score="0"/>
+						<Gun>
+						  <children>
+						  	  <Missile damage="50"/>
+						  </children>
+						</Gun>
+					</children>
+				</Ship>
+				
+				<Ship health="100"  distance="-100" angle="180">
+					<children>
+                        <Player name="beta" score="0"/> 
+						<Gun>
+						  <children>
+						  	  <Missile damage="50"/>
+						  </children>
+						</Gun>
+					</children>
+				</Ship>
+				
+                                <Rock  radius="100"  distance="0" angle="0"/>
+			</children>
+		</Space>
+		
+	
+	</children>
+	
+</Game>
+
